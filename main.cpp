@@ -24,7 +24,8 @@ char getChar(ll a) {
   if (a == 1) return 'A';
   char res = '0' + a;
   return res;
-};
+}
+
 string ctostr(char c) {
   if (c == 'T') return "10";
   if (c == 'J') return "11";
@@ -34,7 +35,7 @@ string ctostr(char c) {
   return string{c};
 }
 
-ll strToll(string s) {
+ll strtoll(string s) {
   string res = "";
   for (auto c : s) {
     res += ctostr(c);
@@ -42,7 +43,7 @@ ll strToll(string s) {
   return stoll(res);
 };
 
-bool IsAllEven(string s) {
+bool isAllEven(string s) {
   for (auto c : s) {
     if (c == '1' || c == '3' || c == '5' || c == '7' || c == '9' || c == 'J' ||
         c == 'K')
@@ -65,7 +66,7 @@ const ll lim = 4;
 // 指定桁の素数を列挙する
 void recPrint(string s) {
   if (SZ(s) == lim) {
-    ll a = strToll(s);
+    ll a = strtoll(s);
     if (!isPrime(a)) return;
     cout << s << endl;
     return;
@@ -80,11 +81,11 @@ void printOnePrime() {
   if (SZ(S) > 10) {
     cout << "<warning> too large number" << endl;
   }
-  if (strToll(S) % 3 == 0) {
+  if (strtoll(S) % 3 == 0) {
     cout << "S is multiple of 3" << endl;
     return;
   }
-  if (IsAllEven(S)) {
+  if (isAllEven(S)) {
     cout << "S is multiple of 2" << endl;
     return;
   }
@@ -97,7 +98,7 @@ void printOnePrime() {
   // まじめにやるなら9から始まる桁から先に探したほうが強い
   string ans = "no prime found";
   do {
-    ll a = strToll(S);
+    ll a = strtoll(S);
     if (isPrime(a)) {
       ans = S;
       break;
